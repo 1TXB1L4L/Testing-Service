@@ -3,7 +3,7 @@ export interface User {
     name: string;
     email: string;
     is_active: boolean;
-    avatat: string;
+    avatar: string;
     created_at: string
     email_verified_at?: string;
 }

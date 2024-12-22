@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('class_id')->constrained('classes')->onDelete('null');
+            $table->foreignId('class_id')->constrained('classes')->onDelete('set null');
             $table->string('title');
-            $table->string('author');
-            $table->string('publisher');
+            $table->string('author')->nullable();
+            $table->string('publisher')->nullable();
             $table->string('cover_image')->nullable();
             $table->string('pdf_file')->nullable();
             $table->string('description')->nullable();
