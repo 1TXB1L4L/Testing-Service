@@ -144,27 +144,27 @@ const Users = ({ users }: Props) => {
     setOpenAlert(true);
   };
 
-  const handleDelete = async () => {
-    let url = route("users.destroy", selectedUser?.id);
-    try {
-      await axios.delete(url);
-      toast.success("User has been deleted successfully");
-      setSelectedUser(undefined);
-    } catch (error) {
-      toast.error("Something went wrong. Please try again later.");
-      setSelectedUser(undefined);
-    }
-  }
   //const handleDelete = async () => {
-  //  router.delete(route("users.destroy", selectedUser?.id), {
-  //    preserveScroll: true,
-  //    preserveState: true,
-  //    onSuccess: () => {
-  //      toast.success("User has been deleted successfully");
-  //      setSelectedUser(undefined);
-  //    },
-  //  });
-  //};
+  //  let url = route("users.destroy", selectedUser?.id);
+  //  try {
+  //    await axios.delete(url);
+  //    toast.success("User has been deleted successfully");
+  //    setSelectedUser(undefined);
+  //  } catch (error) {
+  //    toast.error("Something went wrong. Please try again later.");
+  //    setSelectedUser(undefined);
+  //  }
+  //}
+  const handleDelete = async () => {
+    router.delete(route("users.destroy", selectedUser?.id), {
+      preserveScroll: true,
+      preserveState: true,
+      onSuccess: () => {
+        toast.success("User has been deleted successfully");
+        setSelectedUser(undefined);
+      },
+    });
+  };
 
   const handleUpdateStatus = () => {
     router.post(
