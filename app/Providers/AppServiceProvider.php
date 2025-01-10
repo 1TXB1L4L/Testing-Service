@@ -23,5 +23,6 @@ class AppServiceProvider extends ServiceProvider
     {
         JsonResource::withoutWrapping();
         Vite::prefetch(concurrency: 3);
+        \URL::forceScheme('https');
     }
 }
