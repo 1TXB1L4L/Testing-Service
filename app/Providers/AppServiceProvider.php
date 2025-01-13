@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Vite;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -22,7 +22,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         JsonResource::withoutWrapping();
-        Vite::prefetch(concurrency: 3);
-        \URL::forceScheme('https');
+
+        // Force HTTPS or HTTP based on environment configuration
+        URL::forceScheme(env('HTTP_OR_HTTPS', 'https'));
     }
 }
